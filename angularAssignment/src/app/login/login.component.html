@@ -1,0 +1,55 @@
+<h1 style="text-align: center;">
+  Login Form
+</h1>
+<div class="login">
+  <h2 class="login-header">Log in</h2>
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+      <input
+        label="username"
+        type="text"
+        placeholder="User Name"
+        formControlName="username"
+        required
+      />
+    </p>
+
+    <div *ngIf="isSubmitted && formControls.username.errors" class="help-block">
+      <div *ngIf="formControls.username.errors.required">
+        User Name is required
+      </div>
+    </div>
+    <div *ngIf="isSubmitted && formControls.username.errors" class="help-block">
+      <div *ngIf="formControls.username.errors.minlength">
+        User Name should have min 8 characters
+      </div>
+    </div>
+
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+      <input
+        label="password"
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+    </p>
+
+    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+      <div *ngIf="formControls.password.errors.required">
+        Password is required
+      </div>
+    </div>
+    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+      <div *ngIf="formControls.password.errors.pswd">
+        Password should have a special character, digit , uppercase alphabet
+      </div>
+    </div>
+    <p>
+      <input type="submit" value="Log in">
+    </p>
+    <alert *ngIf="alertMessage" [type]="type">
+      {{alertMessage}}
+    </alert>
+  </form>
+</div>

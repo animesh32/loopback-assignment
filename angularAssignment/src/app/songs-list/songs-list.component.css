@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    /* display: inline-block; */
+  }
+
+div{
+    padding: 20px;
+}
+
+button {
+    background-color: rgb(69, 77, 189); 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+td{
+    font-size: 17px;
+    color: rgb(48, 45, 45);
+}
+th{
+    font-size: 22px;
+    color: rgb(13, 14, 13);
+}
