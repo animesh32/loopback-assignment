@@ -26,26 +26,26 @@ export class LoginComponent implements OnInit {
   ) {}
 
   pswdValidator = (control: FormControl) => {
-    let password = control.value;
-    let count = [0, 0, 0, 0];
-    for (let i = 0; i < password.length; i++) {
-      if (password[i] >= '0' && password[i] <= '9') {
+    const password = control.value;
+    const count = [0, 0, 0, 0];
+    for (const i of password) {
+      if (i >= '0' && i <= '9') {
         count[0] = 1;
-      } else if (password[i] >= 'A' && password[i] <= 'Z') {
+      } else if (i >= 'A' && i <= 'Z') {
         count[1] = 1;
-      } else if (password[i] >= 'a' && password[i] <= 'z') {
+      } else if (i >= 'a' && i <= 'z') {
         count[2] = 1;
       } else {
         count[3] = 1;
       }
     }
-    for (let i in count) {
+    for (const i in count) {
       if (count[i] !== 1) {
         return { pswd: 'invalid' };
       }
     }
     return null;
-  };
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           break;
       }
     } else {
-      this.type = "success";
+      this.type = 'success';
       this.alertMessage = 'User logged in successfully';
       // this.router.navigate(['/users']);
     }

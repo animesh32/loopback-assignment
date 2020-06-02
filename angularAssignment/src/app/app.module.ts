@@ -16,20 +16,21 @@ import { CustomersComponent } from './customers/customers.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { ConfirmDialogComponent, } from './confirm-dialog/confirm-dialog.component';
-import {InfoDialogComponent} from './confirm-dialog/info-dialog.component'
-import {MatDialogModule} from "@angular/material/dialog";
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { InfoDialogComponent } from './confirm-dialog/info-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SongPlayerComponent } from './song-player/song-player.component';
-import { SongsListComponent } from './songs-list/songs-list.component'
+import { SongsListComponent } from './songs-list/songs-list.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HomePageComponent } from './home-page/home-page.component';
-import {MatTableModule} from '@angular/material/table';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; 
+import { MatTableModule } from '@angular/material/table';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
-import { ChangePasswordComponent } from './change-password/change-password.component'; 
-import {JwtInterceptor} from './_helpers/jwt-interceptor';
-import { CreateUserComponent } from './create-user/create-user.component'
-
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { JwtInterceptor } from './_helpers/jwt-interceptor';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { MatFormFieldModule, } from '@angular/material/form-field';
+import  {MatSelectModule} from '@angular/material/select'
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,18 +65,17 @@ import { CreateUserComponent } from './create-user/create-user.component'
     MatTableModule,
     NgIdleKeepaliveModule.forRoot(),
     MomentModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor, 
+      useClass: JwtInterceptor,
       multi: true,
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents:[
-    ConfirmDialogComponent,
-    InfoDialogComponent
-  ]
+  entryComponents: [ConfirmDialogComponent, InfoDialogComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,5 +4,8 @@ export enum Configs {
   signIn = `http://localhost:3000/sign-in`,
   getSongs = `http://localhost:3000/songs`,
   changePswd = `http://localhost:3000/change-password`,
-  getUsers = "http://localhost:3000/users",
+  getUsers = 'http://localhost:3000/users',
+  roles = 'http://localhost:3000/roles',
+  postUser = "http://localhost:3000/users",
+  delUser = "delUser"
 }

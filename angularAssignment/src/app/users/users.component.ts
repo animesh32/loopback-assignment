@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { InfoDialog } from '../services/info-dialog.service';
 import { Configs } from '../enums/configs';
-
+import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -19,9 +19,10 @@ export class UsersComponent implements OnInit {
     'action',
   ];
   constructor(
-    private router: Router,
-    private http: HttpClient,
-    private infoDialog: InfoDialog
+    public router: Router,
+    public http: HttpClient,
+    public infoDialog: InfoDialog,
+    public authService: AuthenticationService
   ) {}
 
   getUsersList = async () => {
@@ -37,7 +38,6 @@ export class UsersComponent implements OnInit {
 
   async ngOnInit() {
     await this.getUsersList();
-    console.log(this.usersList)
     for (const i in this.usersList) {
       this.usersList[
         i
@@ -48,8 +48,23 @@ export class UsersComponent implements OnInit {
   showCustomers = (element) => {
     this.router.navigate(['show-customers', element.id]);
   };
+  deleteUser = async (element) => {
+    if (element.username === this.authService.loggedUser) {
+      this.infoDialog.display('Info', 'Cannot delete current user');
+      return;
+    }
+    await this.http.delete(`${Configs.getUsers}/${element.id}`).toPromise();
+    let temp=[];
+    this.usersList.forEach((el) => {
+      if (el.id !== element.id) {
+        temp.push(el)
+      }
+    });
+    this.usersList=temp;
+    this.infoDialog.display('Info', 'User deleted Successfuly');
+  };
 
-  createUser=()=>{
-    this.router.navigate(['create-user'])
-  }
+  createUser = () => {
+    this.router.navigate(['create-user']);
+  };
 }
