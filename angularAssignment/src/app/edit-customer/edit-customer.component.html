@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>
+    Create Customer
+  </h1>
+  
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onConfirm()">
+      <label for="name"><b>Name</b></label>
+      <input
+        type="text"
+        placeholder="Enter Name"
+        name="name"
+        formControlName="name"
+        required
+      />
+
+      <label for="website"><b>Website</b></label>
+      <input
+        type="text"
+        placeholder="Enter website"
+        name="website"
+        formControlName="website"
+        required
+      />
+      <label for="address"><b>Address</b></label>
+      <input
+        type="text"
+        placeholder="Enter Address"
+        name="address"
+        formControlName="address"
+      />
+    </form>
+  </div>
+  
+  <div mat-dialog-actions>
+    <button mat-button (click)="onDismiss()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">
+      Save
+    </button>
+  </div>
+  

@@ -29,8 +29,11 @@ import { MomentModule } from 'angular2-moment';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { JwtInterceptor } from './_helpers/jwt-interceptor';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { MatFormFieldModule, } from '@angular/material/form-field';
-import  {MatSelectModule} from '@angular/material/select'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,8 @@ import  {MatSelectModule} from '@angular/material/select'
     HomePageComponent,
     ChangePasswordComponent,
     CreateUserComponent,
+    CreateCustomerComponent,
+    EditCustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,7 @@ import  {MatSelectModule} from '@angular/material/select'
     NgIdleKeepaliveModule.forRoot(),
     MomentModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     {
@@ -76,6 +81,11 @@ import  {MatSelectModule} from '@angular/material/select'
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmDialogComponent, InfoDialogComponent],
+  entryComponents: [
+    ConfirmDialogComponent,
+    InfoDialogComponent,
+    CreateCustomerComponent,
+    EditCustomerComponent,
+  ],
 })
 export class AppModule {}

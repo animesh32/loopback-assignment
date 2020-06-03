@@ -7,5 +7,5 @@ export enum Configs {
   getUsers = 'http://localhost:3000/users',
   roles = 'http://localhost:3000/roles',
   postUser = "http://localhost:3000/users",
-  delUser = "delUser"
+  customer="http://localhost:3000/customers"
 }

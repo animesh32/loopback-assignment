@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CreateUserService } from '../services/create-user.service';
-import {InfoDialog} from "../services/info-dialog.service"
+import { InfoDialog } from '../services/info-dialog.service';
 
 @Component({
   selector: 'app-create-user',
@@ -20,7 +20,7 @@ export class CreateUserComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public createUser: CreateUserService,
-    public infoDialog:InfoDialog
+    public infoDialog: InfoDialog
   ) {}
 
   async ngOnInit() {
@@ -38,7 +38,13 @@ export class CreateUserComponent implements OnInit {
       },
       { validators: this.createUser.matchPassword }
     );
-    this.roles = await this.createUser.getRoles();
+    this.roles = await this.createUser
+      .getRoles()
+      .then((data) => data)
+      .catch((err) => {
+        this.infoDialog.display('Info', 'Internal Server Error');
+        return [];
+      });
   }
   get formControls() {
     return this.userForm.controls;
@@ -60,7 +66,7 @@ export class CreateUserComponent implements OnInit {
       address: formValue.address,
       rolesId: this.createUser.roleIdMapping[formValue.role],
     };
-    await this.createUser.create(user)
-    this.infoDialog.display('Info','User Created Successfuly')
+    await this.createUser.create(user);
+    this.infoDialog.display('Info', 'User Created Successfuly');
   };
 }
