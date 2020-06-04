@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { InfoDialog } from '../services/info-dialog.service';
 import { Configs } from '../enums/configs';
